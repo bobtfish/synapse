@@ -1,0 +1,13 @@
+{
+  "smartstack": { "development": true },
+  "env": "test",
+  "cookbook_path": "cookbooks/",
+  "run_list": [
+    "recipe[apt]",
+    "recipe[smartstack::synapse]",
+    "recipe[smartstack::nerve]",
+    "recipe[smartstack::test]",
+    "recipe[minitest-handler]"
+  ]
+}
+

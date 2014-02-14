@@ -1,3 +1,5 @@
+smartstack-cookbook
+smartstack-cookbook/*
 *.gem
 *.rbc
 .bundle
