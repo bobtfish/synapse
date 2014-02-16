@@ -3,11 +3,8 @@ cache: bundler
 rvm:
   - 1.9.3
 before_install:
-  - gem install berkshelf
-  - gem install chef
   - git clone https://github.com/airbnb/smartstack-cookbook.git
   - gem build synapse.gemspec
   - "gem install -f synapse*.gem"
-  - "mkdir -p /var/chef/cache;chmod 777 /var/chef/cache"
-  - 'cd smartstack-cookbook ; berks install ; rm Gemfile.lock; bundle install ; cd ..'
+  - 'rm smartstack-cookbook/Gemfile.lock'
 
