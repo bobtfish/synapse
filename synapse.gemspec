@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{: Write a gem summary}
   gem.homepage      = ""
 
-  gem.files         = `git ls-files`.split($/)
+  gem.files         = `find #{File.dirname(__FILE__)} -type f | grep -v .git | sed -e"s/^..//"`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
 
