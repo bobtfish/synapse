@@ -7,7 +7,7 @@ describe Synapse::Haproxy do
 
   it 'updating the config' do
     mockWatcher = double(Synapse::ServiceWatcher)
-    subject.should_receive(:generate_config)
+    expect(subject).to receive(:generate_config)
     subject.update_config([mockWatcher])
   end
 end
