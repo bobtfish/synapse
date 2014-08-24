@@ -2,25 +2,6 @@ require "synapse/service_watcher/base"
 
 require 'etcd'
 
-# Monkeypatch till 91f9e72d6d57ae3760e9266835f404d986072590 gets to rubygems..
-module Etcd
-  module Keys
-    def watch(key, opts = {})
-      params = { wait: true }
-      fail ArgumentError, 'Second argument must be a hash' unless opts.is_a?(Hash)
-      timeout = opts[:timeout] || @read_timeout
-      index = opts[:waitIndex] || opts[:index]
-      params[:waitIndex] = index unless index.nil?
-      params[:consistent] = opts[:consistent] if opts.key?(:consistent)
-      params[:recursive] = opts[:recursive] if opts.key?(:recursive)
-
-      response = api_execute(key_endpoint + key, :get,
-                             timeout: timeout, params: params)
-      Response.from_http_response(response)
-    end
-  end
-end
-
 module Synapse
   class EtcdWatcher < BaseWatcher
     NUMBERS_RE = /^\d+$/
