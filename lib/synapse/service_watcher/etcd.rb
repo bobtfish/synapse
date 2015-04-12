@@ -117,8 +117,6 @@ module Synapse
         new_backends = new_backends.sort_by {|k| k["id"]}
         if @backends != new_backends
 	  log.info "synapse: discovered #{new_backends.length} backends (including new) for service #{@name}"
-          log.info @backends.inspect
-          log.info new_backends.inspect
           @backends = new_backends
           true
         else
